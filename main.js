@@ -8,6 +8,7 @@ let finalMsg = document.getElementById("final-msg")
 let restartBtn = document.getElementById("restart-btn")
 
 
+// Function to get the computer's choice:
 let computerSelection = ""
 function getComputerChoice(){
     let random = Math.floor(Math.random()*(3-1+1)+1)
@@ -23,6 +24,7 @@ function getComputerChoice(){
     }
 }
 
+// Function to get the player's choice:
 let playerSelection = ""
 function getPlayerChoice(){
     if(player.value == "rock") {
@@ -36,6 +38,8 @@ function getPlayerChoice(){
     }
 }
 
+
+// Function to play a round and determinate the winner:
 let winner = ""
 let playerCounter = 0
 let cpuCounter = 0
@@ -73,7 +77,7 @@ function roundPlay(playerSelection, computerSelection) {
     }
 }
 
-
+// Function to show and hide buttons:
 function showAndHide() {
     play.classList.add("hide")
     finalMsg.classList.remove("hide")
@@ -82,6 +86,8 @@ function showAndHide() {
     restartBtn.classList.add("show")
 }
 
+
+// Function to count rounds, maximum to 5:
 let gamesPlayed = 0
 function game() {
     gamesPlayed++
@@ -93,6 +99,7 @@ function game() {
     }
 }
 
+// Play a round with "Play" button:
 play.addEventListener("click", ()=> {
     getComputerChoice()
     getPlayerChoice()
@@ -102,6 +109,8 @@ play.addEventListener("click", ()=> {
     cpuScore.innerHTML = cpuCounter
 })
 
+
+// Restart the game:
 restartBtn.addEventListener("click", () => {
     player.value = ""
     cpu.innerHTML = ""
