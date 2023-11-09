@@ -42,34 +42,34 @@ let cpuCounter = 0
 function roundPlay(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
         winner = "Its a tie!"
-        result.classList.add("blue")
+        result.style.color = "blue"
     } else if (playerSelection == "rock" && computerSelection == "paper") {
         winner = "Paper beats rock, you lost!"
-        result.classList.add("red")
+        result.style.color = "red"
         cpuCounter ++
     } else if (playerSelection == "rock" && computerSelection == "scissors") {
         winner = "Rock beats scissors, you won!"
-        result.classList.add("green")
+        result.style.color = "green"
         playerCounter ++
     } else if (playerSelection == "paper" && computerSelection == "rock") {
         winner = "Paper beats rock, you won!"
-        result.classList.add("green")
+        result.style.color = "green"
         playerCounter ++
     } else if (playerSelection == "paper" && computerSelection == "scissors") {
         winner = "Scissors beats paper, you lost!"
-        result.classList.add("red")
+        result.style.color = "red"
         cpuCounter ++
     } else if (playerSelection == "scissors" && computerSelection == "rock") {
         winner = "Rock beats scissors, you lost!"
-        result.classList.add("red")
+        result.style.color = "red"
         cpuCounter ++
     } else if (playerSelection == "scissors" && computerSelection == "paper") {
         winner = "Scissors beats paper, you won!"
-        result.classList.add("green")
+        result.style.color = "green"
         playerCounter ++
     } else {
         winner = "Oops! Try again with a valid option"
-        result.classList.add("blue")
+        result.style.color = "blue"
     }
 }
 
