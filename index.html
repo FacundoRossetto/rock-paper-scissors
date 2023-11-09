@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock paper scissors game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>Rock Paper Scissors!</h1>
     
     <h3>Make your choice!</h3>
     <input id="player" type="text">
-    <button id="play" class="">Play!</button>
+    <button id="play-btn" class="">Play!</button>
     <h3>Computer choice:</h3>
     <p id="cpu"></p>
 
@@ -22,7 +23,8 @@
     <p>Your score: <span id="player-score"></span></p>
     <p>CPU score: <span id="cpu-score"></span></p>
 
-    <button>RESTART</button>
+    <h3 id="final-msg" class="hide">The game is over, restart it here:</h3>
+    <button id="restart-btn" class="hide">RESTART</button>
 
     <script src="main.js"></script>
 </body>

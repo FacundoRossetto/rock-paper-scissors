@@ -1,9 +1,11 @@
-let play = document.getElementById("play")
+let play = document.getElementById("play-btn")
 let cpu = document.getElementById("cpu")
 let player = document.getElementById("player")
 let result = document.getElementById("result")
 let playerScore = document.getElementById("player-score")
 let cpuScore = document.getElementById("cpu-score")
+let finalMsg = document.getElementById("final-msg")
+let restartBtn = document.getElementById("restart-btn")
 
 
 let computerSelection = ""
@@ -64,8 +66,12 @@ function roundPlay(playerSelection, computerSelection) {
 }
 
 
-function showRestart() {
-
+function showAndHide() {
+    play.classList.add("hide")
+    finalMsg.classList.remove("hide")
+    finalMsg.classList.add("show")
+    restartBtn.classList.remove("hide")
+    restartBtn.classList.add("show")
 }
 
 let gamesPlayed = 0
@@ -76,7 +82,7 @@ function game() {
     } else if (gamesPlayed = 5) {
         roundPlay(playerSelection, computerSelection)
         console.log("GAME OVER")
-        showRestart()
+        showAndHide()
     }
     console.log("Games played: "+gamesPlayed)
 }
@@ -89,4 +95,6 @@ play.addEventListener("click", ()=> {
     playerScore.innerHTML = playerCounter
     cpuScore.innerHTML = cpuCounter
 })
+
+
 
