@@ -42,26 +42,34 @@ let cpuCounter = 0
 function roundPlay(playerSelection, computerSelection) {
     if (playerSelection == computerSelection) {
         winner = "Its a tie!"
+        result.classList.add("blue")
     } else if (playerSelection == "rock" && computerSelection == "paper") {
         winner = "Paper beats rock, you lost!"
+        result.classList.add("red")
         cpuCounter ++
     } else if (playerSelection == "rock" && computerSelection == "scissors") {
         winner = "Rock beats scissors, you won!"
+        result.classList.add("green")
         playerCounter ++
     } else if (playerSelection == "paper" && computerSelection == "rock") {
         winner = "Paper beats rock, you won!"
+        result.classList.add("green")
         playerCounter ++
     } else if (playerSelection == "paper" && computerSelection == "scissors") {
         winner = "Scissors beats paper, you lost!"
+        result.classList.add("red")
         cpuCounter ++
     } else if (playerSelection == "scissors" && computerSelection == "rock") {
         winner = "Rock beats scissors, you lost!"
+        result.classList.add("red")
         cpuCounter ++
     } else if (playerSelection == "scissors" && computerSelection == "paper") {
         winner = "Scissors beats paper, you won!"
+        result.classList.add("green")
         playerCounter ++
     } else {
         winner = "Oops! Try again with a valid option"
+        result.classList.add("blue")
     }
 }
 
@@ -81,10 +89,8 @@ function game() {
         roundPlay(playerSelection, computerSelection)
     } else if (gamesPlayed = 5) {
         roundPlay(playerSelection, computerSelection)
-        console.log("GAME OVER")
         showAndHide()
     }
-    console.log("Games played: "+gamesPlayed)
 }
 
 play.addEventListener("click", ()=> {
@@ -96,5 +102,19 @@ play.addEventListener("click", ()=> {
     cpuScore.innerHTML = cpuCounter
 })
 
-
+restartBtn.addEventListener("click", () => {
+    player.value = ""
+    cpu.innerHTML = ""
+    result.innerHTML = ""
+    playerCounter = 0
+    playerScore.innerHTML = playerCounter
+    cpuCounter = 0
+    cpuScore.innerHTML = cpuCounter
+    gamesPlayed = 0
+    play.classList.add("show")
+    finalMsg.classList.remove("show")
+    finalMsg.classList.add("hide")
+    restartBtn.classList.remove("show")
+    restartBtn.classList.add("hide")
+})
 
