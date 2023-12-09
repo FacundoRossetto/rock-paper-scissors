@@ -1,9 +1,13 @@
-let play = document.getElementById("play-btn")
+let subtitle = document.getElementById("subtitle")
+let rockBtn = document.getElementById("rock-btn")
+let paperBtn = document.getElementById("paper-btn")
+let scissorsBtn = document.getElementById("scissors-btn")
 let cpu = document.getElementById("cpu")
 let player = document.getElementById("player")
 let result = document.getElementById("result")
 let playerScore = document.getElementById("player-score")
 let cpuScore = document.getElementById("cpu-score")
+let champ = document.getElementById("champ")
 let finalMsg = document.getElementById("final-msg")
 let restartBtn = document.getElementById("restart-btn")
 
@@ -24,22 +28,8 @@ function getComputerChoice(){
     }
 }
 
-// Function to get the player's choice:
+// Function to determinate the winner:
 let playerSelection = ""
-function getPlayerChoice(){
-    if(player.value == "rock") {
-        playerSelection = "rock"
-    } else if (player.value == "paper") {
-        playerSelection = "paper"
-    } else if (player.value == "scissors") {
-        playerSelection = "scissors"
-    } else {
-        alert("Please choose a valid option :)")
-    }
-}
-
-
-// Function to play a round and determinate the winner:
 let winner = ""
 let playerCounter = 0
 let cpuCounter = 0
@@ -79,7 +69,10 @@ function roundPlay(playerSelection, computerSelection) {
 
 // Function to show and hide buttons:
 function showAndHide() {
-    play.classList.add("hide")
+    subtitle.classList.add("hide")
+    rockBtn.classList.add("hide")
+    paperBtn.classList.add("hide")
+    scissorsBtn.classList.add("hide")
     finalMsg.classList.remove("hide")
     finalMsg.classList.add("show")
     restartBtn.classList.remove("hide")
@@ -87,22 +80,44 @@ function showAndHide() {
 }
 
 
-// Function to count rounds, maximum to 5:
-let gamesPlayed = 0
+// Function to count points, maximum to 5:
 function game() {
-    gamesPlayed++
-    if (gamesPlayed < 5) {
-        roundPlay(playerSelection, computerSelection)
-    } else if (gamesPlayed = 5) {
-        roundPlay(playerSelection, computerSelection)
+    roundPlay(playerSelection, computerSelection)
+    if (playerCounter == 5) {
+        champ.innerHTML = "YOU WON! :)"
+        showAndHide()
+    } else if (cpuCounter == 5) {
+        champ.innerHTML = "Oops, CPU WINS :("
         showAndHide()
     }
 }
 
 // Play a round with "Play" button:
-play.addEventListener("click", ()=> {
+
+rockBtn.addEventListener("click", ()=> {
+    playerSelection = "rock"
+    console.log(playerSelection)
     getComputerChoice()
-    getPlayerChoice()
+    game()
+    result.innerHTML = winner
+    playerScore.innerHTML = playerCounter
+    cpuScore.innerHTML = cpuCounter
+})
+
+paperBtn.addEventListener("click", ()=> {
+    playerSelection = "paper"
+    console.log(playerSelection)
+    getComputerChoice()
+    game()
+    result.innerHTML = winner
+    playerScore.innerHTML = playerCounter
+    cpuScore.innerHTML = cpuCounter
+})
+
+scissorsBtn.addEventListener("click", ()=> {
+    playerSelection = "scissors"
+    console.log(playerSelection)
+    getComputerChoice()
     game()
     result.innerHTML = winner
     playerScore.innerHTML = playerCounter
@@ -112,7 +127,6 @@ play.addEventListener("click", ()=> {
 
 // Restart the game:
 restartBtn.addEventListener("click", () => {
-    player.value = ""
     cpu.innerHTML = ""
     result.innerHTML = ""
     playerCounter = 0
@@ -120,7 +134,10 @@ restartBtn.addEventListener("click", () => {
     cpuCounter = 0
     cpuScore.innerHTML = cpuCounter
     gamesPlayed = 0
-    play.classList.add("show")
+    rockBtn.classList.add("show")
+    paperBtn.classList.add("show")
+    scissorsBtn.classList.add("show")
+    champ.classList.add("hide")
     finalMsg.classList.remove("show")
     finalMsg.classList.add("hide")
     restartBtn.classList.remove("show")
